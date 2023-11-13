@@ -11,7 +11,7 @@ const dbName = 'test';
 
 app.set('view engine','ejs');
 
-const SECRETKEY = 'I want to pass COMPS381F';
+const SECRETKEY = 'COMPS381F';
 
 const users = new Array(
 	{name: 'developer', password: 'developer'},
@@ -50,60 +50,6 @@ app.post('/login', (req,res) => {
 		}
 	});
 	res.redirect('/');
-});
-
-
-const createDocument = function(db, createddocuments, callback){
-    const client = new MongoClient(mongourl);
-    client.connect(function(err) {
-        assert.equal(null, err);
-        console.log("Connected successfully to the MongoDB database server.");
-        const db = client.db(dbName);
-
-        db.collection('restaurants').insertOne(createddocuments, function(error, results){
-            if(error){
-            	throw error
-            };
-            console.log(results);
-            return callback();
-        });
-    });
-}
-
-app.get('/create', function(req, res){
-    return res.status(200).render("create");
-});
-
-app.post('/create', function(req, res){
-    const client = new MongoClient(mongourl);
-    client.connect(function(err){
-        assert.equal(null, err);
-        console.log("Connected successfully to the DB server.");
-        const db = client.db(dbName);
-        
-        documents["_id"] = ObjectID;        
-		documents["inventoryID"] = req.body.inventoryID;	
-		documents['name']= req.body.name;
-
-        console.log("...putting data into documents");
-        
-        documents["ownerID"] = `${req.session.userid}`;
-        
-        if(documents.restaurantID){
-            console.log("...Creating the document");
-            createDocument(db, documents, function(docs){
-                client.close();
-                console.log("Closed DB connection");
-                return res.status(200).render('info', {message: "Document is created successfully!"});
-            });
-        } else{
-            client.close();
-            console.log("Closed DB connection");
-            return res.status(200).render('info', {message: "Invalid entry - Restaurant ID is compulsory!"});
-        }
-    });
-    //client.close();
-    //return res.status(200).render('info', {message: "Document created"}); 
 });
 
 
