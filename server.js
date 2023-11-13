@@ -3,6 +3,17 @@ const session = require('cookie-session');
 const bodyParser = require('body-parser');
 const app = express();
 
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+
+const assert = require('assert');
+const http = require('http');
+const url = require('url');
+
+const mongourl = '';
+const dbName = 'inventory';
+const client = new MongoClient(mongourl);
+
 app.set('view engine','ejs');
 
 const SECRETKEY = 'I want to pass COMPS381F';
@@ -45,6 +56,52 @@ app.post('/login', (req,res) => {
 	});
 	res.redirect('/');
 });
+
+
+app.get('/create', function(req, res){
+    return res.status(200).render("create");
+});
+
+app.post('/create', function(req, res){
+    const client = new MongoClient(mongourl);
+    client.connect(function(err){
+        assert.equal(null, err);
+        console.log("Connected successfully to the DB server.");
+        const db = client.db(dbName);
+        
+        documents["_id"] = ObjectID;        
+		documents["inventoryID"] = req.body.restaurantID;	
+		documents['name']= req.body.name;
+		documents['category']= req.body.cuisine;
+		documents['status']= req.body.number;
+        documents['userID']= req.body.description;
+		documents['date']= req.body.description;
+		documents['remark']= req.body.description;
+
+        console.log("...putting data into documents");
+        
+        documents["ownerID"] = `${req.session.userid}`;
+        
+        if(documents.restaurantID){
+            console.log("...Creating the document");
+            createDocument(db, documents, function(docs){
+                client.close();
+                console.log("Closed DB connection");
+                return res.status(200).render('info', {message: "Document is created successfully!"});
+            });
+        } else{
+            client.close();
+            console.log("Closed DB connection");
+            return res.status(200).render('info', {message: "Invalid entry - Restaurant ID is compulsory!"});
+        }
+    });
+    //client.close();
+    //return res.status(200).render('info', {message: "Document created"}); 
+});
+
+
+
+
 
 app.get('/logout', (req,res) => {
 	req.session = null;   // clear cookie-session

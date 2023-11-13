@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Inventory</title>
+    <style>
+    label{
+        font-size: 1.3em;
+    }
+    </style>
+</head>
+
+<div>
+<body>
+    <div class="jumbotron text-center">
+            <h1>Create New Inventory Item</h1>
+        </div>
+    <form action="/create" method="POST">
+    <label for='inventoryID'><b>Inventory ID:</b></label><br>
+            <input type="text" id="inventoryID" name="inventoryID" placeholder="" pattern="[0-9]{8}"><br>
+        <small>Format: XXXXXXXX (Only available for number)</small><br><br>
+        <label for='name'><b>Inventory Name:</b></label><br>
+          <input type="text" id="name" name="name" placeholder=""><br><br>
+
+        <label for='category'><b>Category:</b></label><br>
+          <input type="text" id="category" name="category" placeholder=""><br><br>
+        <label for='status'><b>Status:</b></label><br>
+            <input type="text" id="status" name="status" placeholder=""><br><br>
+        <label for='userID'><b>User ID:</b></label><br>
+          <input type="text" id="userID" name="userID" placeholder="" pattern="[0-9]{8}"><br><br>
+        <label for='date'><b>Date:</b></label><br>
+            <input type="text" id="date" name="date" placeholder=""><br><br>
+        <label for='remark'><b>Remark:</b></label><br>
+            <textarea name="remark" id="remark" cols="50" rows="5" placeholder="Add your remark here..."></textarea><br>
+        </p>
+        <input type="submit" value="Create" /> 
+    </form>    
+</body>
+</div>
+</html>
