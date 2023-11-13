@@ -6,7 +6,7 @@ const app = express();
 const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
-const mongourl = 'mongodb+srv://admin:123@cluster0.nndk5cp.mongodb.net/?retryWrites=true&w=majority'; 
+const mongourl = ''; 
 const dbName = 'test';
 
 app.set('view engine','ejs');
@@ -14,8 +14,8 @@ app.set('view engine','ejs');
 const SECRETKEY = 'COMPS381F';
 
 const users = new Array(
-	{name: 'developer', password: 'developer'},
-	{name: 'guest', password: 'guest'}
+	{name: 'user1', password: 'user1'},
+	{name: 'user2', password: 'user2'}
 );
 
 app.use(session({
