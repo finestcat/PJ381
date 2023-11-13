@@ -57,6 +57,22 @@ app.post('/login', (req,res) => {
 	res.redirect('/');
 });
 
+const createDocument = function(db, createddocuments, callback){
+    const client = new MongoClient(mongourl);
+    client.connect(function(err) {
+        assert.equal(null, err);
+        console.log("Connected successfully to the MongoDB database server.");
+        const db = client.db(dbName);
+
+        db.collection('restaurants').insertOne(createddocuments, function(error, results){
+            if(error){
+            	throw error
+            };
+            console.log(results);
+            return callback();
+        });
+    });
+}
 
 app.get('/create', function(req, res){
     return res.status(200).render("create");
