@@ -52,6 +52,13 @@ app.post('/login', (req,res) => {
 	res.redirect('/');
 });
 
+app.get('/create', (req,res) => {
+	res.status(200).render('create',{});
+});
+
+app.post('/create', (req,res) => {
+//
+});
 
 app.get('/logout', (req,res) => {
 	req.session = null;   // clear cookie-session

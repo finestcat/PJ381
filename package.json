@@ -4,7 +4,7 @@
     "author": "To be filled later",
     "version": "0.0.1",
     "engines": {
-        "node": "^14.15.1"
+        "node": "^16.20.1"
     },
     "dependencies": {
         "express": "*",
