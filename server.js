@@ -3,16 +3,11 @@ const session = require('cookie-session');
 const bodyParser = require('body-parser');
 const app = express();
 
+const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
-
-const assert = require('assert');
-const http = require('http');
-const url = require('url');
-
-const mongourl = 'mongodb+srv://admin:123@cluster0.nndk5cp.mongodb.net/?retryWrites=true&w=majority';
-const dbName = 'inventory';
-const client = new MongoClient(mongourl);
+const mongourl = 'mongodb+srv://admin:123@cluster0.nndk5cp.mongodb.net/?retryWrites=true&w=majority'; 
+const dbName = 'test';
 
 app.set('view engine','ejs');
 
@@ -57,6 +52,7 @@ app.post('/login', (req,res) => {
 	res.redirect('/');
 });
 
+
 const createDocument = function(db, createddocuments, callback){
     const client = new MongoClient(mongourl);
     client.connect(function(err) {
@@ -86,13 +82,8 @@ app.post('/create', function(req, res){
         const db = client.db(dbName);
         
         documents["_id"] = ObjectID;        
-		documents["inventoryID"] = req.body.restaurantID;	
+		documents["inventoryID"] = req.body.inventoryID;	
 		documents['name']= req.body.name;
-		documents['category']= req.body.cuisine;
-		documents['status']= req.body.number;
-        documents['userID']= req.body.description;
-		documents['date']= req.body.description;
-		documents['remark']= req.body.description;
 
         console.log("...putting data into documents");
         
@@ -114,9 +105,6 @@ app.post('/create', function(req, res){
     //client.close();
     //return res.status(200).render('info', {message: "Document created"}); 
 });
-
-
-
 
 
 app.get('/logout', (req,res) => {
