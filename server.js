@@ -10,7 +10,7 @@ const assert = require('assert');
 const http = require('http');
 const url = require('url');
 
-const mongourl = '';
+const mongourl = 'mongodb+srv://admin:123@cluster0.nndk5cp.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'inventory';
 const client = new MongoClient(mongourl);
 
