@@ -60,6 +60,30 @@ app.post('/create', (req,res) => {
 //
 });
 
+app.get('/details', (req,res) => {
+	res.status(200).render('details',{});
+});
+
+app.post('/details', (req,res) => {
+//
+});
+
+app.get('/edit', (req,res) => {
+	res.status(200).render('edit',{});
+});
+
+app.post('/edit', (req,res) => {
+//
+});
+
+app.get('/search', (req,res) => {
+	res.status(200).render('search',{});
+});
+
+app.post('/search', (req,res) => {
+//
+});
+
 app.get('/logout', (req,res) => {
 	req.session = null;   // clear cookie-session
 	res.redirect('/');
