@@ -1,2 +1,2 @@
-# Inventory Management system
+# Inventory Management System
 # Node.js
