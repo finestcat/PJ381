@@ -1,21 +1,20 @@
 {
     "name": "server",
-    "description": "A inventory management system",
+    "description": "COMPS381F_PROJECT_INVENTORY_MANAGEMENT_SYSTEM",
     "author": "To be filled later",
     "version": "0.0.1",
-    "engines": {
-        "node": "^16.20.1"
-    },
     "dependencies": {
         "express": "*",
+        "express-formidable": "*",
         "ejs": "*",
         "body-parser": "*",
-        "cookie-session": "latest",
+        "cookie-session": "*",
         "mongodb": "*",
-        "assert": "^1.4.1"
+        "assert": "*",
+        "nodemon": "*"
     },
     "engine": "node >= 12.0.0",
     "scripts": {
-        "start": "node server.js"
+        "start": "nodemon server.js"
     }
 }
