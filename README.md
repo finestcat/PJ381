@@ -41,7 +41,7 @@ http://localhost:8099
 
 ********************************************
 # Logout
-- User can logout their account by clicking logout link in the home page interface.
+- User can logout their account by clicking logout button in the home page interface.
 - The session will be cleared after the user logout their account
 
 ********************************************
