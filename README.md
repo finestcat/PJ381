@@ -27,19 +27,21 @@ http://localhost:8099
 
 ********************************************
 # Login
-User can access the Inventory management system by entering their username and password in the login page interface.
+- User can access the Inventory management system by entering their username and password in the login page interface.
 
-There are 3 sets of userID and password:
+- There are 3 sets of userID and password:
+```
 [
 	{userid: user1, password: user123},
 	{userid: user2, password: user234},
 	{uerid: user3, password: user345}
 ]
-After a successful login, userid is stored in session, the user will enter the home page of the system.
+```
+- After a successful login, userid is stored in session, the user will enter the home page of the system.
 
 ********************************************
 # Logout
-User can logout their account by clicking logout link in the home page interface.
+- User can logout their account by clicking logout link in the home page interface.
 
 ********************************************
 # CRUD service
@@ -55,7 +57,7 @@ User can logout their account by clicking logout link in the home page interface
 	5)	Location (Room A123 10/F Block A)
 	6)	Date (01-01-2023)
 
-    Remark:
+    - Remark:
     The attributes Inventory Name and Inventory ID are mandatory, the create page interface will not allow user to submit the form if they are blank. And the other attributes are optional.
 
 - Once the user submit the form and sucessfully created an inventory record, the page will redirect them to the details page interface showing the details of all the inventory records.
