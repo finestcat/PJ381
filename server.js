@@ -65,11 +65,9 @@ app.get('/details', (req,res) => {
     const client = new MongoClient(mongourl);
     client.connect((err) => {
         assert.equal(null, err);
-        console.log("Connected successfully to MongoDB.");
         const db = client.db(dbName);
         const criteria = {};
 
-		console.log("OK for creating a new document");
 		findDocument(db, criteria, (docs) => {
 			client.close();
 		res.status(200).render('details', {items: docs});
@@ -85,8 +83,9 @@ app.get('/create', (req,res) => {
 
 const createDocument = (db, createDoc, callback) => {
     db.collection('Inventory').insertOne(createDoc, (error, results) => {
-        if (error) throw error;
-        console.log(results);
+        if (error) {
+            throw error;
+        }
         callback();
     });
 };
@@ -95,7 +94,6 @@ app.post('/create', (req,res) => {
     const client = new MongoClient(mongourl);
     client.connect((err) => {
         assert.equal(null, err);
-        console.log("Connected successfully to MongoDB.");
         const db = client.db(dbName);
         const document = {	
             id: req.body.id,
@@ -106,11 +104,8 @@ app.post('/create', (req,res) => {
 			date: req.body.date
         };
 
-            console.log("OK for creating a new document");
             createDocument(db, document, () => {
-            console.log("Created new document successfully");
             client.close();
-            console.log("Closed DB connection");
             res.redirect('/details');
     });
     client.close();
@@ -139,8 +134,9 @@ app.get('/delete?:id', (req,res) => {
 
 const editDocument = (db, idEdit, editDoc, upsert,callback) => {
     db.collection('Inventory').update({ _id: ObjectID(idEdit) },editDoc, upsert,(error, results) => {
-        if (error) throw error;
-        console.log(results);
+        if (error) {
+            throw error;
+        }
         callback();
     });
 };
@@ -148,21 +144,18 @@ const editDocument = (db, idEdit, editDoc, upsert,callback) => {
 
 app.get('/edit?:id', (req,res) => {
 	const idEdit = req.query._id;
-	console.log(idEdit)
 	const client = new MongoClient(mongourl);
     client.connect((err) => {
         assert.equal(null, err);
-        console.log("Connected successfully to MongoDB.");
         const db = client.db(dbName);
         const criteria = {
 			_id: ObjectID(idEdit)
 		};
 
-		console.log("OK for creating a new document");
 		findDocument(db, criteria, (docs) => {
 			client.close();
 		res.status(200).render('edit', {docs});
-		console.log(docs)
+		
 	});
 });
 });
@@ -174,10 +167,9 @@ app.post('/edit', (req,res) => {
 	const idEdit = req.body._id
     client.connect((err) => {
         assert.equal(null, err);
-        console.log("Connected successfully to MongoDB.");
+       
         const db = client.db(dbName);
         const editDoc = { $set:{
-			
 			id: req.body.id,
             name: req.body.name,
             category: req.body.category,
@@ -189,7 +181,6 @@ app.post('/edit', (req,res) => {
 
 		editDocument(db, idEdit, editDoc, upsert,() => {
 		client.close();
-		console.log("Closed DB connection");
 		});
 	client.close();
 	});
