@@ -34,7 +34,7 @@ http://localhost:8099
 [
 	{userid: user1, password: user123},
 	{userid: user2, password: user234},
-	{uerid: user3, password: user345}
+	{userid: user3, password: user345}
 ]
 ```
 - After a successful login, userid is stored in session, the user will enter the home page of the system.

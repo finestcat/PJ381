@@ -17,8 +17,9 @@ app.set('views','./views');
 const SECRETKEY = 'COMPS381F';
 
 const users = new Array(
-	{name: 'user1', password: 'user1'},
-	{name: 'user2', password: 'user2'}
+	{name: 'user1', password: 'user123'},
+	{name: 'user2', password: 'user234'},
+    {name: 'user3', password: 'user345'}
 );
 var document = {}
 
