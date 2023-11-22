@@ -5,16 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <style>
-        p{
-            font-size: 1.3em;
-        }
+    table, th, td {
+        border: 2px solid #454B1B;
+        text-align: center;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    tr:hover {
+        background-color: #08a36a; color: white
+    }
+
+    a:link, a:visited {
+        background-color: white;
+        color: black;
+        padding: 2px 2px;
+        text-align: center;
+        text-decoration: none;
+        color:blue;
+        display: inline-block;
+        font-style: italic;
+        text-decoration: underline;
+        border-radius: 5px;
+    }
+
+    a:hover, a:active {
+        background-color: #FF5F15;
+        color: white;
+    }
     </style>
 </head>
 <body>
     <div class="jumbotron text-center">
-        <h1>Inventory Information</h1>
+        <h1>Inventory Information Deatails</h1>
     </div>
-
+<hr>
     <table>
         <thead>
             <tr>
@@ -36,6 +63,13 @@
                 <th>
                     Date
                 </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Delete
+                </th>
+                
 
             </tr>
         </thead>
@@ -71,6 +105,8 @@
             <%} )%>
         </tbody>
     </table>
+    <br>
+    <br>
 
 
     

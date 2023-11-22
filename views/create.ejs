@@ -6,8 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Inventory</title>
     <style>
-    label{
-        font-size: 1.3em;
+    .inputA {
+    background-color: #08a36a; 
+    border: none;
+    color: white;
+    padding: 2px 25px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+    }
+    .input1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #08a36a;
+    border-radius: 5px;
+    }
+
+    .input1:hover {
+    background-color: #08a36a;
+    color: white;
+    }
+    .inputB {
+    background-color: #08a36a;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 2px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+    }
+    .input2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #08a36a;
+    border-radius: 5px;
+    }
+
+    .input2:hover {
+    background-color: #08a36a;
+    color: white;
+    }
+    body{
+    font-weight: bold;
+    }
+    a:link, a:visited {
+        background-color: white;
+        color: black;
+        padding: 2px 2px;
+        text-align: center;
+        text-decoration: none;
+        color:blue;
+        display: inline-block;
+        font-style: italic;
+        text-decoration: underline;
+        border-radius: 5px;
+    }
+
+    a:hover, a:active {
+        background-color: #FF5F15;
+        color: white;
     }
     </style>
 </head>
@@ -21,36 +87,40 @@
 
 
       <div class="mb-3">
-          <label for="id" class="form-label">Inventory ID</label>
-          <input type="text" id="id" name="id" class="form-control" placeholder="Inventory ID">
+          <label for="id" class="form-label">Inventory ID:*</label>
+          <input type="text" id="id" name="id" class="inputA input1" placeholder="XXXXX" required>
       </div>
+      <br>
       <div class="mb-3">
-          <label for="name" class="form-label">Inventory Name</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Inventory Name">
+          <label for="name" class="form-label">Inventory Name:*</label>
+          <input type="text" id="name" name="name" class="inputA input1" placeholder="Table" required>
       </div>
-      
+      <br>
       <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
-          <input type="text" id="category" name="category" class="form-control" placeholder="Category">
+          <label for="category" class="form-label">Category:</label>
+          <input type="text" id="category" name="category" class="inputA input1" placeholder="Furniture/Accessory/Other">
       </div>
+      <br>
       <div class="mb-3">
-          <label for="status" class="form-label">Status</label>
-          <input type="text" id="status" name="status" class="form-control" placeholder="Status">
-      </div>
+          <label for="status" class="form-label">Status:</label>
 
+      <input type="text" id="status" name="status" class="inputA input1" placeholder="Active/Pending/Disposal">
+      </div>
+<br>
       <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input type="text" id="location" name="location" class="form-control" placeholder="Location">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" id="location" name="location" class="inputA input1" placeholder="10/F A123">
       </div>
-
+<br>
       <div class="mb-3">
-        <label for="date" class="form-label">Date</label>
-        <input type="text" id="date" name="date" class="form-control" placeholder="date">
+        <label for="date" class="form-label">Date:</label>
+        <input type="text" id="date" name="date" class="inputA input1" placeholder="DD-MM-YYYY">
       </div>
+      <br><br>
 
 
 
-      <button type="submit" id="Create_btn">Create</button>
+      <button type="submit" id="Create_btn" class="inputB input2">Create</button>
     </form> 
     <br><br>
     <a href="/" role="button"><i>Back to homepage</i></a>

@@ -1,17 +1,73 @@
 <html>
+<head>
+<style>
+.inputA {
+  background-color: #08a36a; 
+  border: none;
+  color: white;
+  padding: 2px 1px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  margin: 2px 2px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  font-weight: bold;
+}
+.input1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #08a36a;
+  border-radius: 5px;
+}
 
+.input1:hover {
+  background-color: #08a36a;
+  color: white;
+}
+.inputB {
+  background-color: #08a36a;
+  border: none;
+  color: white;
+  padding: 5px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 2px 2px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  font-weight: bold;
+}
+.input2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #08a36a;
+  border-radius: 5px;
+}
+
+.input2:hover {
+  background-color: #08a36a;
+  color: white;
+}
+
+</style>
+</head>
 <body>
-	<p>Use the following IDs and Password:</p>
-	<ol>
-		<li>user1 (password: user1)</li>
-		<li>user2 (password: user2)</li>
-	</ol>
+
+	<h1>Inventory Managment System</h1>
+	
 	<hr>
-	<form action="/login" method="post">
-		Username: <input type="text" name="name"><br>
-		Password: <input type="password" name="password"><br>
-		<input type="submit" value="Login">
+    <h2>Please login:</h2>
+    
+	<form action="/login" method="post" >
+    <label for="name" class="label1"><b>Username: </b></label>
+		<input type="text" name="name" size="20" class="inputA input1"><br><br>
+    <label for="password" class="label1"><b>Password: </b></label>
+		<input type="password" name="password" size="20" class="inputA input1"><br><br>
+		<input type="submit" value="Login" class="inputB input2">
 	</form>
+  
 </body>
 
 </html>

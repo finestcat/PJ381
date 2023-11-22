@@ -5,51 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Inventory Information</title>
     <style>
-    label{
-        font-size: 1.3em;
+    .inputA {
+    background-color: #08a36a; 
+    border: none;
+    color: white;
+    padding: 2px 25px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
     }
-    p{
-        font-size: 1.3em;
+    .input1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #08a36a;
+    border-radius: 5px;
+    }
+
+    .input1:hover {
+    background-color: #08a36a;
+    color: white;
+    }
+    .inputB {
+    background-color: #08a36a;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 2px 2px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+    }
+    .input2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #08a36a;
+    border-radius: 5px;
+    }
+
+    .input2:hover {
+    background-color: #08a36a;
+    color: white;
+    }
+    body{
+    font-weight: bold;
+    }
+    a:link, a:visited {
+        background-color: white;
+        color: black;
+        padding: 2px 2px;
+        text-align: center;
+        text-decoration: none;
+        color:blue;
+        display: inline-block;
+        font-style: italic;
+        text-decoration: underline;
+        border-radius: 5px;
+    }
+
+    a:hover, a:active {
+        background-color: #FF5F15;
+        color: white;
     }
     </style>
 </head>
 <body>
+        <h1>Modify Inventory Information</h1>
+    <hr>
     <% docs.forEach((item) => { %>
-    <div class="jumbotron text-center">
-        <h1>Update Inventory Information</h1>
-    </div>
     <form action="/edit" method="POST">
 
-    <input type="hidden" class="form-control" name="_id" value="<%= item._id %>">
+    <input type="hidden" class="" name="_id" value="<%= item._id %>">
     <div>
-        <label for="id" class="form-label">Inventory ID</label>
-        <input type="text" id="id" name="id" class="form-control" placeholder="Inventory ID" value="<%= item.id %>">
+        <label for="id" class="form-label">Inventory ID:</label>
+        <input type="text" id="id" name="id" class=" inputA input1" placeholder="Inventory ID" value="<%= item.id %>">
     </div>
+    <br>
     <div>
-        <label for="name" class="form-label">Inventory Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Inventory Name" value="<%= item.name %>">
+        <label for="name" class="form-label">Inventory Name:</label>
+        <input type="text" id="name" name="name" class=" inputA input1" placeholder="Inventory Name" value="<%= item.name %>">
     </div>
-    
+    <br>
     <div>
-        <label for="category" class="form-label">Category</label>
-        <input type="text" id="category" name="category" class="form-control" placeholder="Category" value="<%= item.category %>">
+        <label for="category" class="form-label">Category:</label>
+        <input type="text" id="category" name="category" class=" inputA input1" placeholder="Category" value="<%= item.category %>">
     </div>
+    <br>
     <div>
-        <label for="status" class="form-label">Status</label>
-        <input type="text" id="status" name="status" class="form-control" placeholder="Status" value="<%= item.status %>">
+        <label for="status" class="form-label">Status:</label>
+        <input type="text" id="status" name="status" class=" inputA input1" placeholder="Status" value="<%= item.status %>">
     </div>
-
+<br>
     <div >
-      <label for="location" class="form-label">Location</label>
-      <input type="text" id="location" name="location" class="form-control" placeholder="Location" value="<%= item.location %>">
+      <label for="location" class="form-label">Location:</label>
+      <input type="text" id="location" name="location" class=" inputA input1" placeholder="Location" value="<%= item.location %>">
     </div>
-
+<br>
     <div>
-      <label for="date" class="form-label">Date</label>
-      <input type="text" id="date" name="date" class="form-control" placeholder="date" value="<%= item.date %>">
+      <label for="date" class="form-label">Date:</label>
+      <input type="text" id="date" name="date" class=" inputA input1" placeholder="date" value="<%= item.date %>">
     </div>
     <%} )%>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <br>
+    <button type="submit" class="inputB input2">Update</button>
     </form>
     <br><br>
     <a href="/" role="button"><i>Back to homepage</i></a>

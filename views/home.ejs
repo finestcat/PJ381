@@ -4,18 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+    .inputA {
+    display: inline-block;
+    background-color: #08a36a;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 20px;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px;
+    }
+
+
+    .input1:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #08a36a;
+    border-radius: 5px;
+    font-size:200%;
+    text-shadow: none;
+    }
+    
+    .inputB{
+    display: inline-block;
+    background-color: #FF5F15;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 20px;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px;
+    }
+
+    .input2:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #FF5F15;
+    border-radius: 5px;
+    font-size:150%;
+    text-shadow: none;
+    }
+    </style>
 </head>
 <body>
-   <h3>Hello, <%= name %></h3>
-    <div class="jumbotron text-center">
-        <h1>Inventory Management System</h1>
-    </div>
-    <div class="row ml-md-auto">
-        <a href="/create" role="button">Create New Inventory</a> <br><br>
-        <a href="/search" role="button">Find Inventory</a> <br><br>
-        <a href="/details" role="button">View Inventory Details</a> <br><br>
+        <h1>Inventory Management System Homepage</h1>
         <br>
-        <a href="/logout" role="button"><i>Logout</i></a>
+        <h3>Welcome, <i><%= name %></i></h3>
+<hr>
+    <div class="row ml-md-auto">
+        <a href="/create" role="button" class="inputA input1"><b>Create</b> A New Inventory Record</a> <br><br>
+        <a href="/search" role="button" class="inputA input1"><b>Search</b> A Inventory Record</a> <br><br>
+        <a href="/details" role="button" class="inputA input1"><b>View</b> All Inventory Record Details</a> <br><br>
+        <br>
+        <a href="/logout" role="button" class="inputB input2"><i>Logout</i></a>
     </div>
 
 </body>
