@@ -7,7 +7,7 @@ YY (00000100)
 
 Application link: 
 ```
-https://projectsample381.render.com/
+https://testservice-o24q.onrender.com/login
 ```
 
 ********************************************
@@ -42,6 +42,7 @@ http://localhost:8099
 ********************************************
 # Logout
 - User can logout their account by clicking logout link in the home page interface.
+- The session will be cleared after the user logout their account
 
 ********************************************
 # CRUD service
@@ -94,9 +95,9 @@ http://localhost:8099
 	5)	Location (Room A123 10/F Block A)
 	6)	Date (01-01-2023)
 
-	In the above example, attributes including Inventory Name, ID, Category, Status, Location, Date can all be modified by the user.
+	- In the above example, attributes including Inventory Name, ID, Category, Status, Location, Date can all be modified by the user.
 
-    Remark:
+    - Remark:
     The attributes Inventory Name and Inventory ID are mandatory, the update page interface will not allow user to submit the form if they are blank. And the other attributes are optional.
 
 - Once the user submit the form and successfully updated the details of an inventory record, the page will redirect them to the details page interface showing the updated details of all inventory records.
