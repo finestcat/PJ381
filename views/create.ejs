@@ -83,22 +83,23 @@
     <div class="jumbotron text-center">
             <h1>Create New Inventory Item</h1>
         </div>
+    <hr>
+    <i><small>(* required field)</small></i>
     <form action="/create" method="POST">
-
 
       <div class="mb-3">
           <label for="id" class="form-label">Inventory ID:*</label>
-          <input type="text" id="id" name="id" class="inputA input1" placeholder="XXXXX" required>
+          <input type="text" id="id" name="id" class="inputA input1" placeholder="XXXXXX (6 digits)" pattern="[0-9]{6}" required>
       </div>
       <br>
       <div class="mb-3">
           <label for="name" class="form-label">Inventory Name:*</label>
-          <input type="text" id="name" name="name" class="inputA input1" placeholder="Table" required>
+          <input type="text" id="name" name="name" class="inputA input1" placeholder="HP Desktop" required>
       </div>
       <br>
       <div class="mb-3">
           <label for="category" class="form-label">Category:</label>
-          <input type="text" id="category" name="category" class="inputA input1" placeholder="Furniture/Accessory/Other">
+          <input type="text" id="category" name="category" class="inputA input1" placeholder="Furniture/Computer hardware/Other">
       </div>
       <br>
       <div class="mb-3">
@@ -109,7 +110,7 @@
 <br>
       <div class="mb-3">
         <label for="location" class="form-label">Location:</label>
-        <input type="text" id="location" name="location" class="inputA input1" placeholder="10/F A123">
+        <input type="text" id="location" name="location" class="inputA input1" placeholder="Room A123 10/F">
       </div>
 <br>
       <div class="mb-3">

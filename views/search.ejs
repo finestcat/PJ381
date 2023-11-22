@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<style>
     	label{
         font-size: 1.3em;
@@ -10,9 +9,8 @@
     </style>
 </head>
 <body>
-	<div class="jumbotron text-center">
 	<h1>Search Inventory Information</h1>
-	</div>
+	<hr>
 	<form action="/search" method="POST">
 	<label for="inventoryID"><b>Please input restaurant ID:</b></label><br>
 	<input type="text" id="inventoryID" name="inventoryID" placeholder="Type the inventory ID" pattern="[0-9]{8}"><br>

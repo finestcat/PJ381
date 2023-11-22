@@ -80,37 +80,37 @@
         <h1>Modify Inventory Information</h1>
     <hr>
     <% docs.forEach((item) => { %>
+    <i><small>(* required field)</small></i>
     <form action="/edit" method="POST">
-
     <input type="hidden" class="" name="_id" value="<%= item._id %>">
     <div>
-        <label for="id" class="form-label">Inventory ID:</label>
-        <input type="text" id="id" name="id" class=" inputA input1" placeholder="Inventory ID" value="<%= item.id %>">
+        <label for="id" class="form-label">Inventory ID:*</label>
+        <input type="text" id="id" name="id" class=" inputA input1" placeholder="XXXXXX (6 digits)" value="<%= item.id %>" pattern="[0-9]{6}" required>
     </div>
     <br>
     <div>
-        <label for="name" class="form-label">Inventory Name:</label>
-        <input type="text" id="name" name="name" class=" inputA input1" placeholder="Inventory Name" value="<%= item.name %>">
+        <label for="name" class="form-label">Inventory Name:*</label>
+        <input type="text" id="name" name="name" class=" inputA input1" placeholder="HP Desktop" value="<%= item.name %>" required>
     </div>
     <br>
     <div>
         <label for="category" class="form-label">Category:</label>
-        <input type="text" id="category" name="category" class=" inputA input1" placeholder="Category" value="<%= item.category %>">
+        <input type="text" id="category" name="category" class=" inputA input1" placeholder="Furniture/Computer hardware/Other" value="<%= item.category %>">
     </div>
     <br>
     <div>
         <label for="status" class="form-label">Status:</label>
-        <input type="text" id="status" name="status" class=" inputA input1" placeholder="Status" value="<%= item.status %>">
+        <input type="text" id="status" name="status" class=" inputA input1" placeholder="Active/Pending/Disposal" value="<%= item.status %>">
     </div>
 <br>
     <div >
       <label for="location" class="form-label">Location:</label>
-      <input type="text" id="location" name="location" class=" inputA input1" placeholder="Location" value="<%= item.location %>">
+      <input type="text" id="location" name="location" class=" inputA input1" placeholder="Room A123 10/F" value="<%= item.location %>">
     </div>
 <br>
     <div>
       <label for="date" class="form-label">Date:</label>
-      <input type="text" id="date" name="date" class=" inputA input1" placeholder="date" value="<%= item.date %>">
+      <input type="text" id="date" name="date" class=" inputA input1" placeholder="DD-MM-YYYY" value="<%= item.date %>">
     </div>
     <%} )%>
     <br>
