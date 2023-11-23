@@ -222,16 +222,6 @@ app.post('/search', function(req, res){
 
 		var document = {}
     	        document["id"] = req.body.id;
-		var document = {}
-		document["name"] = req.body.name;
-		var document = {}
-		document["category"] = req.body.category;
-		var document = {}
-		document["status"] = req.body.status;
-		var document = {}
-		document["location"] = req.body.location;
-		var document = {}
-		document["date"] = req.body.date;
 
    
     findAdocument(db, document, function(docs){
