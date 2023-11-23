@@ -7,7 +7,7 @@
 
 ### Application link: 
 ```
-https://testservice-o24q.onrender.com/login
+https://comps381f-group-16.onrender.com
 ```
 
 ********************************************
@@ -77,7 +77,7 @@ http://localhost:8099
 
 2) Search inventory by attributes
 	- serach.ejs will allow user to search for inventory record(s) through Inventory Name, ID, Category, Status, Location, Date.
-    - The search result will be displayed after the user filled in one of the field and pressed the search button.
+    - The search result will be displayed after the user filled in one of the fields and pressed the search button.
 	- The user may perform edit or delete operation in the search result page.
 
 ********************************************
