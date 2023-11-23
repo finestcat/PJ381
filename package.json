@@ -1,7 +1,7 @@
 {
     "name": "server",
     "description": "COMPS381F_PROJECT_INVENTORY_MANAGEMENT_SYSTEM",
-    "author": "To be filled later",
+    "author": "Chan Ho ,Tong Kin Lik",
     "version": "0.0.1",
     "dependencies": {
         "express": "*",
