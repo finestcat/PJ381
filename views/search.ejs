@@ -121,72 +121,8 @@
 
       <button type="submit" id="Search_btn" class="inputB input2">Search</button>
     </form> 
-    <br><br><br><br>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>
-                    Location
-                </th>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Edit
-                </th>
-                <th>
-                    Delete
-                </th>
-                
-
-            </tr>
-        </thead>
-        <tbody>
-            <% items.forEach((item) => { %>
-            <tr>
-                <td>
-                    <%= item.id %>
-                </td>
-                <td>
-                    <%= item.name %>
-                </td>
-                <td>
-                    <%= item.category %>
-                </td>
-                <td>
-                    <%= item.status %>
-                </td>
-                <td>
-                    <%= item.location %>
-                </td>
-                <td>
-                    <%= item.date %>
-                </td>
-                <td>
-                    <a href="/edit?_id=<%= item._id %>" id="edit_btn">Edit
-                </td>
-                <td>
-                    <a href="/delete?_id=<%= item._id %>" id="delete_btn">Delete
-                </td>
-            </tr>
-            <input type="hidden" name="id" value="<%= item._id %>">
-            <%} )%>
-        </tbody>
-    </table>
-    <br>
-    <br>
+    <br><br>
+    
     <a href="/" role="button"><i>Back to homepage</i></a>
 </body>
 </div>
