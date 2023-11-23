@@ -190,13 +190,8 @@ app.post('/edit', (req,res) => {
 	res.redirect('/details');
 });
 
-app.get('/result', (req,res) => {
-    res.status(200).render('result');
-});
-
 
 app.get('/search', (req,res) => {
-	res.status(200).render('search');
 });
 
 const searchDocument = (db, searchDoc, callback) => {
@@ -221,9 +216,9 @@ app.post('/search', (req,res) => {
 			date: req.body.date
         };
 
-            searchDocument(db, document, () => {
+            searchDocument(db, document, (docs) => {
             client.close();
-            res.status(200).render('result', {items: docs});
+            res.status(200).render('search', {items: docs});
     });
     client.close();
 });
