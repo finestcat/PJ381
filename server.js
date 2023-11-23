@@ -190,11 +190,6 @@ app.post('/edit', (req,res) => {
 	res.redirect('/details');
 });
 
-
-app.get('/result', (req,res) => {
-
-});
-
 const searchDocument = (db, searchDoc, callback) => {
     db.collection('Inventory').find(searchDoc, (error, results) => {
         if (error) throw error;
