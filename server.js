@@ -191,6 +191,7 @@ app.post('/edit', (req,res) => {
 });
 
 app.get('/result', (req,res) => {
+    res.status(200).render('result');
 });
 
 
