@@ -189,17 +189,297 @@ app.post('/edit', (req,res) => {
 });
 
 app.get('/search', (req,res) => {
-	res.status(200).render('search',{});
+	res.status(200).render('search');
 });
 
+const searchDocument = (db, searchDoc, callback) => {
+    db.collection('Inventory').find(searchDoc, (error, results) => {
+        if (error) throw error;
+        console.log(results);
+        callback();
+    });
+};
+
 app.post('/search', (req,res) => {
-//
+    const client = new MongoClient(mongourl);
+    client.connect((err) => {
+        assert.equal(null, err);
+        const db = client.db(dbName);
+        const document = {	
+            id: req.body.id,
+            name: req.body.name,
+            category: req.body.category,
+            status: req.body.status,
+			location: req.body.location,
+			date: req.body.date
+        };
+
+            searchDocument(db, document, () => {
+            client.close();
+            res.status(200).render('result', {items: docs});
+    });
+    client.close();
+});
 });
 
 app.get('/logout', (req,res) => {
 	req.session = null;  
 	res.redirect('/');
 });  		
+
+//
+
+// 2. RESTful APIs for the inventory system 
+// [The core part of the web service]
+
+//
+
+
+
+/*  CREATE
+
+curl -X POST -H "Content-Type: application/json" --data '{"id":"4","name":"ABC Powerbank", "cat":"electronics", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/create
+
+*/
+
+app.post('/api/stock/create', (req,res) => {
+
+    
+
+    console.log(req.body)
+
+    const client = new MongoClient(mongourl);
+
+    client.connect((err) => {
+
+        assert.equal(null,err);
+
+        console.log("Connected successfully to server");
+
+        const db = client.db(dbName);
+
+        let newDoc = {};
+
+        newDoc['id'] = req.fields.id;
+        newDoc['name'] = req.fields.name;
+        newDoc['category'] = req.fields.cat;
+        newDoc['status'] = req.fields.status;
+        newDoc['location'] = req.fields.location;
+        newDoc['date'] = req.fields.date;
+        
+        db.collection('Inventory').insertOne(newDoc,(err,results) => {
+
+                    assert.equal(err,null);
+
+                    client.close()
+
+                    res.status(200).json(newDoc);
+                    res.status(200).json("The above document has been added").end();
+                    
+
+                })
+
+            });
+
+})
+
+ 
+/* READ
+
+curl -X GET -H "Content-Type: application/json" --data '{"id":"4","name":"ABC Powerbank", "cat":"electronics", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/read
+
+*/
+
+app.get('/api/stock/read', (req,res) => {
+
+console.log(req.body)
+
+    const client = new MongoClient(mongourl);
+
+    client.connect((err) => {
+
+        assert.equal(null,err);
+
+        console.log("Connected successfully to server");
+
+        const db = client.db(dbName);
+
+        let oldDoc = {};
+
+        oldDoc['id'] = req.fields.id;
+        oldDoc['name'] = req.fields.name;
+        oldDoc['category'] = req.fields.cat;
+        oldDoc['status'] = req.fields.status;
+        oldDoc['location'] = req.fields.location;
+        oldDoc['date'] = req.fields.date;
+        
+        db.collection('Inventory').find(oldDoc,(err,results) => {
+
+                    assert.equal(err,null);
+
+                    client.close()
+
+                    res.status(200).json(oldDoc);
+                    
+                    res.status(200).json("Found document").end();
+
+                    
+
+                })
+
+            });
+
+                   
+
+
+        
+})
+
+
+
+
+
+/*  UPDATE
+
+curl -X PUT -H "Content-Type: application/json" --data '{"id":"4","name":"DEF Router", "cat":"accessories", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/update/id/4
+
+*/
+
+app.put('/api/stock/update/id/:id', (req,res) => {
+
+if (req.params.id) {
+
+    console.log(req.body)
+
+    const client = new MongoClient(mongourl);
+
+    client.connect((err) => {
+
+        assert.equal(null,err);
+
+        console.log("Connected successfully to server");
+
+        const db = client.db(dbName);
+
+
+
+        let criteria = {}
+
+        criteria['id'] = req.params.id
+
+
+
+        let updateDoc = {};
+
+        Object.keys(req.fields).forEach((key) => {
+
+            updateDoc[key] = req.fields[key];
+
+        })
+
+        console.log(updateDoc)
+
+        
+           
+
+        db.collection('Inventory').updateOne(criteria, {$set: updateDoc},(err,results) => {
+
+           assert.equal(err,null);
+
+           client.close()
+
+           res.status(200).json(results);
+           res.status(200).json("The above document has been updated").end();
+
+        })
+
+        
+
+    })
+
+} else {
+
+    res.status(500).json({"error": "missing inventory id"});
+
+}
+
+})
+
+
+
+/*  DELETE
+
+curl -X DELETE -H "Content-Type: application/json" --data '{"id":"4","name":"DEF Router", "cat":"accessories", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/delete
+
+*/
+
+app.delete('/api/stock/delete', function(req,res) {
+
+console.log(req.body)
+
+    const client = new MongoClient(mongourl);
+
+    client.connect((err) => {
+
+        assert.equal(null,err);
+
+        console.log("Connected successfully to server");
+
+        const db = client.db(dbName);
+
+        let oldDoc = {};
+
+        oldDoc['id'] = req.fields.id;
+        oldDoc['name'] = req.fields.name;
+        oldDoc['category'] = req.fields.cat;
+        oldDoc['status'] = req.fields.status;
+        oldDoc['location'] = req.fields.location;
+        oldDoc['date'] = req.fields.date;
+        
+        db.collection('Inventory').remove(oldDoc,(err,results) => {
+
+                    assert.equal(err,null);
+
+                    client.close()
+
+                    res.status(200).json(oldDoc).end();
+                    
+                    
+
+                    
+
+                })
+
+            });
+
+
+
+
+
+
+
+
+
+
+});
+//
+
+// End of Restful APIs
+
+//
+
+
+
+
+
+app.get('/*', (req,res) => {
+
+//res.status(404).send(`${req.path} - Unknown request!`);
+
+res.status(404).render('info', {message: `${req.path} - Unknown request!` });
+
+})
+
 
 
 app.listen(app.listen(process.env.PORT || 8099));

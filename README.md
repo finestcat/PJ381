@@ -1,11 +1,11 @@
-Inventory management system
+# Inventory management system
 
-Group: 16
-Student Name and ID: 
-XX (00000000),
-YY (00000100)
+## Group: 16
+## Student Name and ID: 
+### Chan Ho (12661493),
+### Tong Kin Lik (00000100)
 
-Application link: 
+### Application link: 
 ```
 https://testservice-o24q.onrender.com/login
 ```

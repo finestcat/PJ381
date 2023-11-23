@@ -1,23 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<style>
-    	label{
-        font-size: 1.3em;
-    }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Inventory</title>
+    <style>
+        .inputA {
+        background-color: #08a36a; 
+        border: none;
+        color: white;
+        padding: 2px 25px;
+        text-align: center;
+        display: inline-block;
+        font-size: 15px;
+        margin: 2px 2px;
+        transition-duration: 0.5s;
+        cursor: pointer;
+        font-weight: bold;
+        }
+        .input1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #08a36a;
+        border-radius: 5px;
+        }
+    
+        .input1:hover {
+        background-color: #08a36a;
+        color: white;
+        }
+        .inputB {
+        background-color: #08a36a;
+        border: none;
+        color: white;
+        padding: 5px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 2px 2px;
+        transition-duration: 0.5s;
+        cursor: pointer;
+        font-weight: bold;
+        }
+        .input2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #08a36a;
+        border-radius: 5px;
+        }
+    
+        .input2:hover {
+        background-color: #08a36a;
+        color: white;
+        }
+        body{
+        font-weight: bold;
+        }
+        a:link, a:visited {
+            background-color: white;
+            color: black;
+            padding: 2px 2px;
+            text-align: center;
+            text-decoration: none;
+            color:blue;
+            display: inline-block;
+            font-style: italic;
+            text-decoration: underline;
+            border-radius: 5px;
+        }
+    
+        a:hover, a:active {
+            background-color: #FF5F15;
+            color: white;
+        }
+        </style>
 </head>
+
+<div>
 <body>
-	<h1>Search Inventory Record(s)</h1>
-	<hr>
-	<form action="/search" method="POST">
-	<label for="inventoryID"><b>Please input restaurant ID:</b></label><br>
-	<input type="text" id="inventoryID" name="inventoryID" placeholder="Type the inventory ID" pattern="[0-9]{8}"><br>
-	<small>Format: XXXXXXXX (8 digit number)</small><br>
-	<input type="submit" value="Search" />
-	<br><br>
+            <h1>Search Inventory Item(s)</h1>
+            
+            <hr>
+
+    <form action="/search" method="POST">
+
+
+    <div>
+        <label for="id" class="form-label">Inventory ID:</label>
+        <input type="text" id="id" name="id" class=" inputA input1" placeholder="XXXXXX (6 digits)" value="" pattern="[0-9]{6}">
+    </div>
+    <br>
+    <div>
+        <label for="name" class="form-label">Inventory Name:*</label>
+        <input type="text" id="name" name="name" class=" inputA input1" placeholder="HP Desktop" value="">
+    </div>
+    <br>
+    <div>
+        <label for="category" class="form-label">Category:</label>
+        <input type="text" id="category" name="category" class=" inputA input1" placeholder="Furniture/Computer hardware/Other" value="">
+    </div>
+    <br>
+    <div>
+        <label for="status" class="form-label">Status:</label>
+        <input type="text" id="status" name="status" class=" inputA input1" placeholder="Active/Pending/Disposal" value="">
+    </div>
+<br>
+    <div >
+      <label for="location" class="form-label">Location:</label>
+      <input type="text" id="location" name="location" class=" inputA input1" placeholder="Room A123 10/F" value="">
+    </div>
+<br>
+    <div>
+      <label for="date" class="form-label">Date:</label>
+      <input type="text" id="date" name="date" class=" inputA input1" placeholder="DD-MM-YYYY" value="">
+    </div>
+    <br>
+    <br>
+
+
+      <button type="submit" id="Search_btn" class="inputB input2">Search</button>
+    </form> 
+    <br><br>
     <a href="/" role="button"><i>Back to homepage</i></a>
 </body>
+</div>
 </html>
 
