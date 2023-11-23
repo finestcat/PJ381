@@ -75,6 +75,8 @@ app.get('/details', (req,res) => {
 	});
 });
 
+
+
 });
 
 
@@ -187,6 +189,10 @@ app.post('/edit', (req,res) => {
 	});
 	res.redirect('/details');
 });
+
+app.get('/result', (req,res) => {
+});
+
 
 app.get('/search', (req,res) => {
 	res.status(200).render('search');
