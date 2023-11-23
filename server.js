@@ -191,7 +191,8 @@ app.post('/edit', (req,res) => {
 });
 
 
-app.get('/search', (req,res) => {
+app.get('/result', (req,res) => {
+
 });
 
 const searchDocument = (db, searchDoc, callback) => {
@@ -218,7 +219,7 @@ app.post('/search', (req,res) => {
 
             searchDocument(db, document, (docs) => {
             client.close();
-            res.status(200).render('search', {items: docs});
+            res.status(200).render('result', {items: docs});
     });
     client.close();
 });
