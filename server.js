@@ -190,6 +190,7 @@ app.post('/edit', (req,res) => {
 	res.redirect('/details');
 });
 
+
 const searchDocument = (db, searchDoc, callback) => {
     db.collection('Inventory').find(searchDoc, (error, results) => {
         if (error) throw error;
@@ -198,27 +199,52 @@ const searchDocument = (db, searchDoc, callback) => {
     });
 };
 
-app.post('/search', (req,res) => {
-    const client = new MongoClient(mongourl);
-    client.connect((err) => {
-        assert.equal(null, err);
-        const db = client.db(dbName);
-        const document = {	
-            id: req.body.id,
-            name: req.body.name,
-            category: req.body.category,
-            status: req.body.status,
-			location: req.body.location,
-			date: req.body.date
-        };
-
-            searchDocument(db, document, (docs) => {
-            client.close();
-            res.status(200).render('result', {items: docs});
+const findAdocument =  function(db, criteria, callback){
+    let cursor = db.collection('Inventory').find(criteria);
+    console.log(`findDocument: ${JSON.stringify(criteria)}`);
+    cursor.toArray(function(err, docs){
+        assert.equal(err, null);
+        console.log(`findDocument: ${docs.length}`);
+        return callback(docs);
     });
-    client.close();
+}
+
+app.get('/search', (req,res) => {
+	res.status(200).render('search');
 });
+
+app.post('/search', function(req, res){
+    const client = new MongoClient(mongourl);
+    client.connect(function(err){
+        assert.equal(null, err);
+        console.log("Connected successfully to the DB server.");
+        const db = client.db(dbName);
+
+		var document = {}
+    	        document["id"] = req.body.id;
+		var document = {}
+		document["name"] = req.body.name;
+		var document = {}
+		document["category"] = req.body.category;
+		var document = {}
+		document["status"] = req.body.status;
+		var document = {}
+		document["location"] = req.body.location;
+		var document = {}
+		document["date"] = req.body.date;
+
+   
+    findAdocument(db, document, function(docs){
+            client.close();
+            console.log("Closed DB connection");
+            res.status(200).render('result', {items: docs});
+        });
+    
+       	
+	});
 });
+
+
 
 app.get('/logout', (req,res) => {
 	req.session = null;  
@@ -468,15 +494,6 @@ console.log(req.body)
 
 
 
-
-
-app.get('/*', (req,res) => {
-
-//res.status(404).send(`${req.path} - Unknown request!`);
-
-res.status(404).render('info', {message: `${req.path} - Unknown request!` });
-
-})
 
 
 
