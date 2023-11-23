@@ -64,7 +64,7 @@ http://localhost:8099
 - Once the user submit the form and sucessfully created an inventory record, the page will redirect them to the details page interface showing the details of all the inventory records.
 
 ********************************************
-# CRUD service (to be modified (serach))
+# CRUD service
 - Read
 
 - To read all the inventory records, click the View All Inventory Record(s) link in the home page interface to enter the details page interface.
@@ -77,7 +77,8 @@ http://localhost:8099
 
 2) Search inventory by attributes
 	- serach.ejs will allow user to search for inventory record(s) through Inventory Name, ID, Category, Status, Location, Date.
-    - to be filled........................................................................................... 
+    - The search result will be displayed after the user filled in one of the field and pressed the search button.
+	- The user may perform edit or delete operation in the search result page.
 
 ********************************************
 # CRUD service
@@ -109,31 +110,53 @@ http://localhost:8099
 - The delete criteria is the object ID of each inventory document.
 
 ********************************************
-# Restful (to be modified)
-In this project, there are three HTTP request types, post, get and delete.
-- Post 
-	Post request is used for insert.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X POST -H "Content-Type: application/json" --data '{"name": "Taro & Tea", "restaurangID":"00000004"}'localhost:8099/api/item/restaurantID/00000004/name/Taro & Tea
-
-- Get
-	Get request is used for find.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X GET http://localhost:8099/api/item/restaurantID/00000002
-
-- Delete
-	Delete request is used for deletion.
-	Path URL: /api/item/restaurantID/:restaurantID
-	Test: curl -X DELETE localhost:8099/api/item/restaurantID/00000002
-
-For all restful CRUD services, login should be done at first.
+# Restful APIs for HTTP services (CRUD web services)
 
 
-curl -X POST -H "Content-Type: application/json" --data '{"name": "Taro & Tea", "restaurangID":"00000004"}' http://localhost:8099/api/item/restaurantID/00000004
+- In this project, there are four HTTP request types established for imposing RESTFUL APIs, i.e. POST, GET, PUT and DELETE ---->
 
-curl -X GET http://localhost:8099/api/item/restaurantID/00000002
 
-curl -X DELETE http://localhost:8099/api/item/restaurantID/00000002
+1. POST 
+       Purpose: A POST request is used for creating new inventory documents and recording in MongoDB as the database.
+       Path URL:
+	   ```
+	    /api/stock/create
+		```
+       Test: 
+	   ```
+	   curl -X POST -H "Content-Type: application/json" --data '{"id":"4","name":"ABC Powerbank", "cat.":"electronics", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/create
+	   ```
 
-Create operation is post request, and all information is in body of request.
+2. GET
+       Purpose: A GET request is used for finding stored inventory records from MongoDB.
+       Path URL:
+	   ```
+	    /api/stock/read
+		```
+       Test:
+	   ```
+	    curl -X GET -H "Content-Type: application/json" --data '{"id":"4","name":"ABC Powerbank", "cat":"electronics", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/read
+		```
+
+3. PUT
+       Purpose: A PUT request is used for updating/editing stored inventory records.
+       Path URL:
+	   ```
+	    /api/stock/update/id/:id
+		```
+       Test:
+	   ```
+	    curl -X PUT -H "Content-Type: application/json" --data '{"id":"4","name":"DEF Router", "cat":"accessories", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/update/id/4
+		```
+
+4. DELETE
+       Purpose: A DELETE request is used for erasing existing records in MongoDB.
+       Path URL: 
+	   ```
+	   /api/stock/delete
+	   ```
+       Test:
+	   ```
+	    curl -X DELETE -H "Content-Type: application/json" --data '{"id":"4","name":"DEF Router", "cat":"accessories", "status":"pending", "location":"Taipo", "date":"23 Nov 2023"}' localhost:8099/api/stock/delete
+		```
 
